@@ -119,7 +119,7 @@ objects:
               }
               stage('Build Image') {
                 steps {
-                  // sh "cp target/openshift-tasks.war target/ROOT.war"
+                  sh "cp target/openshift-tasks.war target/ROOT.war"
                   script {
                     openshift.withCluster() {
                       openshift.withProject(env.DEV_PROJECT) {
