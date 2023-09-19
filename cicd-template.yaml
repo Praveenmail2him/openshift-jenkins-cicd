@@ -119,11 +119,11 @@ objects:
               }
               stage('Build Image') {
                 steps {
-                  sh "cp target/openshift-tasks.war target/ROOT.war"
+                  // sh "cp target/openshift-tasks.war target/ROOT.war"
                   script {
                     openshift.withCluster() {
                       openshift.withProject(env.DEV_PROJECT) {
-                        openshift.selector("bc", "tasks").startBuild("--from-file=target/ROOT.war", "--wait=true")
+                        openshift.selector("bc", "tasks").startBuild("--from-file=./target/openshift-tasks.war", "--wait=true")
                       }
                     }
                   }
